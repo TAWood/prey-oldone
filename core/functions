@@ -74,11 +74,18 @@ get_file(){
 ####################################################################
 
 add_trace(){
-	local urlencoded=`urlencode "$2"`
-	local trace="${current_module}__$1=$urlencoded"
-	log " ++ Adding trace for $current_module: $1"
-	# we need to encode whitespaces, otherwise well get into trouble
-	traces[${#traces[*]}]="$trace"
+	if [ "$post_method" == 'http' ]; then
+		local urlencoded=`urlencode "$2"`
+		local trace="${current_module}__$1=$urlencoded"
+		log " ++ Adding trace for $current_module: $1"
+		# we need to encode whitespaces, otherwise well get into trouble
+		traces[${#traces[*]}]="$trace"
+	else
+		local trace="${current_module}__$1=$2"
+		log " ++ Adding trace for $current_module: $1"
+		# we need to encode whitespaces, otherwise well get into trouble
+		traces[${#traces[*]}]="$trace"
+	fi
 }
 
 separator='########################################################'
