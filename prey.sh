@@ -26,7 +26,7 @@ fi
 # 	exit 1
 # fi
 
-log "${cyan}$STRING_START ### `uname -a`${color_end}\n"
+log "${cyan}$STRING_START ### `date`\n ### `uname -a`${color_end}\n"
 
 ####################################################################
 # lets check if we're actually connected
