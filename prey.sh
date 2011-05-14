@@ -136,4 +136,6 @@ check_running_actions
 run_pending_actions &
 cleanup
 
+log "${cyan}### `date`\n ${color_end}\n"
+
 exit 0
